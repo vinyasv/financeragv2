@@ -39,7 +39,10 @@ python3 -m v2.app init
 
 ## Ingest and ask
 
+The filing HTML is not checked in. Download it from SEC EDGAR into `v2/eval/sources/` first.
+
 ```bash
+python3 -m v2.eval.fetch_filings             # add --heldout for the held-out filings
 python3 -m v2.app ingest v2/eval/sources/nvda-20240128.htm --id nvda-fy2024 --company NVIDIA --url https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm
 python3 -m v2.app ask "Calculate NVIDIA's FY2024 operating-cash-flow margin."
 ```

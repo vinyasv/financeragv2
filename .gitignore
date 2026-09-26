@@ -3,3 +3,16 @@ __pycache__/
 *.pyc
 .DS_Store
 .env
+
+# Filings are re-downloadable with `python3 -m v2.eval.fetch_filings`
+eval/sources/
+
+# Human audit sheet and its unblinding key
+eval/heldout/audit*.csv
+eval/heldout/audit_key.json
+
+# Intermediate question drafts and verifier passes (final set: questions.jsonl + adjudication.jsonl)
+eval/heldout/questions_[ABC].jsonl
+eval/heldout/questions_draft.jsonl
+eval/heldout/questions_only.jsonl
+eval/heldout/verify_*.jsonl
