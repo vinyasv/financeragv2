@@ -1,90 +1,79 @@
 # FinanceRAG v2
 
-Read [GOALS.md](GOALS.md) first. This is the first vertical slice, not a replacement for the existing CLI yet.
+An experiment, not a product. It asks one question: if the LLM only plans and writes, and code does the lookups and arithmetic, does it answer questions about SEC 10-K filings better than naive RAG?
 
-## How it works
+On this test it did, by a wide margin. The test is small, one person built it and parts of the grading were never validated. Read the limitations before quoting any number. The write-up is in [article_tds_short.md](article_tds_short.md).
 
-Ingestion splits each SEC 10-K HTML filing by type:
+## What it does
 
-- **Numeric facts** (`v2_facts`) come from the filing's inline XBRL. Each fact has its sign, scale (money in USD millions), fiscal year, period, segment dimensions, and the statement its table belongs to (income, cash flow, balance sheet, equity, comprehensive, segment, other). Its citation is the printed table row (`v2_table_rows`).
-- **Prose passages** (`v2_passages`) are chunked by 10-K item and embedded. Tables without tagged numbers are embedded as passages too.
+- **Numbers** come from the filing's inline XBRL tags, stored in Postgres and looked up by company, fiscal year, statement and segment. The LLM may pick between numbered candidate rows. It never types a number. Arithmetic runs in Python.
+- **Prose** is found by hybrid search (pgvector plus Postgres full text) over whole-paragraph passages.
+- **The LLM** writes a small JSON plan, then an answer from the looked-up values and passages. Code rejects plans that name companies, years or segments not in the database. It drops a summary containing a number that isn't in the workings.
+- **Missing evidence** is answered "insufficient", not guessed.
 
-Prose passages pack whole paragraphs into ~1,800 characters without splitting sentences. Each is embedded with its company, fiscal year and 10-K item.
+The baseline is naive RAG: whole filings chunked, one vector search, one LLM call, the same models.
 
-A question gets a small JSON plan:
+## Result
 
-- **Numbers:** found by fixed SQL on company, fiscal year, statement and segment, then ranked by row label and XBRL concept. The model picks a numbered candidate only when the ranking has no clear winner; it never copies a number. Arithmetic runs in Python `Decimal`, and so does picking the largest or smallest item ("which segment grew fastest").
-- **Prose:** searched per company with two queries (the question, and the way a filing would phrase the answer). Vector and Postgres full-text rankings are fused, and the neighbours of the best hits are included.
-- **Discovery:** if the answer depends on something unknown in advance, the plan first lists matching rows, then plans once more using only the listed segments.
-- **Answer:** a short summary states the conclusion first, followed by the cited workings. A summary containing any number that isn't in the workings or retrieved text is dropped.
-- **Missing evidence:** reported as `insufficient` rather than guessed.
+77 held-out questions over 33 10-Ks from 11 semiconductor companies. 44 of the questions are about 4 companies never used in development. Each system answered every question 3 times.
 
-## Setup
+| | this system | naive RAG, same text budget | naive RAG, 2× budget |
+|---|---|---|---|
+| Required figures found (code-scored) | 94% | 43% | 60% |
+| Same, figure's label also confirmed by the LLM grader | 92% | 40% | 57% |
+| Pass rate (all figures and claims; LLM-graded) | 93% | 41% | 55% |
+| Median latency | 9.3 s | 5.1 s | 5.2 s |
 
-Create a managed Postgres database (Supabase is the intended host) with `pgvector` available. Use Supabase's **Session pooler** connection URI if the direct database host is unreachable over IPv6. Put the URI in the repository root `.env`:
+Full tables: `eval/heldout/results/report.md`, `summary.md` and `sensitivity.md`.
+
+## Limitations
+
+- **Small and narrow.** One domain, one answer model (`openai/gpt-6-luna`), about 7 questions per type. Differences between question types are indicative, not established.
+- **Unvalidated grader.** The pre-registered human check of the LLM grader (99 claims) was not done. Pass rates, claim scores, citation support and the label-confirmed figure score all depend on that grader. Only the plain figure match does not.
+- **LLM-written answer key.** LLM agents wrote and cross-checked the questions and gold answers. No domain expert reviewed them.
+- **Weak pre-registration.** Questions, code and analysis were hashed before the run (`eval/heldout/FREEZE.sha256`). The freeze was not published or signed off in advance.
+- **No ablation.** The gain can't be attributed to XBRL lookup, planning, validation or anything else in particular.
+- **Figures found ≠ correct.** On an Intel question the system listed the right segment's figures, then named the wrong segment in all three runs.
+- **A known wrong-answer bug.** Lookups key on company and fiscal year. Later reports restate earlier years, so the system can mix figures from two reports and answer confidently and wrongly. This caused 6 of its 17 failures. Not fixed.
+- **Not better everywhere.** It tied naive RAG on prose, multi-step and unanswerable questions. On segment questions it lost to naive RAG at 2× budget (81% vs 86% of figures found). It is slower and makes more model calls (2.8 vs 2.0).
+- **Tuned on its development set.** Fixes came from failures on 54 development questions (`eval/results_summary.md`), so development scores are optimistic. The held-out set is the real test.
+- **Scope.** Only HTML filings with inline XBRL. Only tagged table numbers are exact; everything else is retrieval. Citations point to table rows and passages, not page numbers. The only test is one live end-to-end test.
+- **Built with an AI coding assistant**, including the question-generation pipeline.
+
+## Running it
+
+The code imports itself as `v2`, so clone it into a folder with that name and run commands from the parent folder:
+
+```bash
+git clone https://github.com/vinyasv/financeragv2.git v2
+```
+
+You need a Postgres database with `pgvector` (Supabase works; use its session pooler URI if IPv6 fails) and an OpenRouter key. Put both in a `.env` file in the parent folder:
 
 ```text
 OPENROUTER_API_KEY=...
 V2_DATABASE_URL=postgresql://...
 ```
 
-Install dependencies from the repository root:
+Then install, create the tables, download filings and ask a question:
 
 ```bash
 python3 -m pip install -r v2/requirements.txt
 python3 -m v2.app init
-```
-
-`init --reset` drops and recreates the v2 tables. Use it after a schema change, then ingest again.
-
-## Ingest and ask
-
-The filing HTML is not checked in. Download it from SEC EDGAR into `v2/eval/sources/` first.
-
-```bash
 python3 -m v2.eval.fetch_filings             # add --heldout for the held-out filings
 python3 -m v2.app ingest v2/eval/sources/nvda-20240128.htm --id nvda-fy2024 --company NVIDIA --url https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm
 python3 -m v2.app ask "Calculate NVIDIA's FY2024 operating-cash-flow margin."
 ```
 
-Re-ingesting an unchanged file with the same parser version is skipped. Otherwise the filing's old rows are replaced in one transaction.
+The exact held-out run commands are in `eval/heldout/FREEZE.md`. Evaluation code is in `eval/run.py` (run, grade, score) and `eval/analysis.py` (pre-registered statistics). `eval/sensitivity.py` holds the label check added after the run. The end-to-end test runs with `python3 -m pytest v2/test_e2e.py -q`.
 
-## Evaluation against a naive baseline
+## Files
 
-The corpus is 21 10-Ks: NVIDIA, AMD, Intel, Qualcomm, Broadcom, Micron and Texas Instruments, fiscal years 2022–2024. The questions (`v2/eval/questions_*.jsonl`, 54 in total), their hand-checked gold numbers and their required claims were written before either system was run. The baseline (`v2/eval/baseline.py`) flattens each whole filing, tables included, into chunks. It does one exact vector search (top `k`) and one chat call with the same models. Run it at `k=12` (more context than v2 gets) and at a `k` matched to v2's mean evidence size.
-
-```bash
-python3 -m v2.eval.fetch_filings           # optional SEC_USER_AGENT in .env
-python3 -m v2.eval.run ingest --arm both
-python3 -m v2.eval.run eval --arm v2 --runs 3
-python3 -m v2.eval.run eval --arm baseline --k 12 --runs 3
-python3 -m v2.eval.run retry v2/eval/results/<file>.json   # re-run attempts that hit a network or database error
-python3 -m v2.eval.run judge v2/eval/results/<file>.json ...
-python3 -m v2.eval.run summarize v2/eval/results/<file>.json ...
-```
-
-Scoring:
-
-- **Numbers:** parsed from the answer and matched to the gold values within tolerance.
-- **Other claims:** each question lists the non-numeric claims a full answer must make, such as a date, an identification ("Data Center grew fastest") or a stated driver. A judge model (`V2_JUDGE_MODEL`, default `google/gemini-3.8-flash`, a different family from the system under test; it agreed with `claude-sonnet-5` on 95.6% of claims) decides whether the answer commits to each claim. It also decides whether the evidence the answer cites supports each claim.
-- **Correct:** every gold number matched and every other claim stated. For unanswerable questions, the answer declines with "insufficient evidence".
-- **Citation support:** the share of all required claims (numbers included) that are stated and supported by cited evidence.
-- **Source recall:** the gold source text appears in retrieved evidence. It is an exact-wording proxy for retrieval, not a support check.
-- **Also reported:** evidence size (the retrieval budget), crash rate, run-to-run agreement, latency and API calls.
-
-Results files also store each plan and any discovered rows, so failures can be traced.
-
-## End-to-end test
-
-```bash
-python3 -m pytest v2/test_e2e.py -q
-```
-
-One live test over the two FY2024 filings. It covers a cross-company calculation, a negative value, a prior-year value, a segment share, prose comparing two companies, a mixed question, a question answered after the discovery step, and an unanswerable question.
-
-Current limitations:
-
-- HTML only.
-- Numeric facts are limited to numbers tagged in inline XBRL inside tables.
-- Planning, and the choice between close candidates, still depend on the LLM.
-- Citations identify table rows or passages, not page numbers.
+| path | what |
+|---|---|
+| `app.py`, `xbrl.py`, `reasoning.py`, `schema.sql` | the system |
+| `eval/baseline.py` | naive RAG baseline |
+| `eval/heldout/` | protocol, frozen questions, adjudication log, results |
+| `eval/questions_*.jsonl`, `eval/results/` | development set and its runs |
+| `GOALS.md` | original goals and design decisions |
+| `figures/` | article figures and the scripts that draw them |
