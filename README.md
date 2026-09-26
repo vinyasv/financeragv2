@@ -77,3 +77,4 @@ The exact held-out run commands are in `eval/heldout/FREEZE.md`. Evaluation code
 | `eval/questions_*.jsonl`, `eval/results/` | development set and its runs |
 | `GOALS.md` | original goals and design decisions |
 | `figures/` | article figures and the scripts that draw them |
+| `METHOD.md` | full method behind the article: questions, freeze, models, grading, statistics |
