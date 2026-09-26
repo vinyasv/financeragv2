@@ -1,0 +1,170 @@
+[
+  {
+    "id": "nvda-fy2024",
+    "company": "NVIDIA",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+    "path": "v2/eval/sources/nvda-20240128.htm",
+    "sha256": "995740bb6ff7ca430c8ee36b1139c4e521b8ddbafc14ff304ad29abeae70f958"
+  },
+  {
+    "id": "nvda-fy2023",
+    "company": "NVIDIA",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/nvda-20230129.htm",
+    "path": "v2/eval/sources/nvda-20230129.htm",
+    "sha256": "8feecf82f5ec983fa1960d9d666edda2dddcf3a6cedc9e4393563d7436b372c7"
+  },
+  {
+    "id": "nvda-fy2022",
+    "company": "NVIDIA",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/nvda-20220130.htm",
+    "path": "v2/eval/sources/nvda-20220130.htm",
+    "sha256": "bf5fa3fcb9ffbd361c5546d338b93a9d78a9792a65fd8cf3af17d1e9ad3de46f"
+  },
+  {
+    "id": "amd-fy2024",
+    "company": "AMD",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000012/amd-20241228.htm",
+    "path": "v2/eval/sources/amd-20241228.htm",
+    "sha256": "3cf47911ac96c70d33f59b39eeb1f2d34e8ed6133ac4f40a6594c2a8be4308c9"
+  },
+  {
+    "id": "amd-fy2023",
+    "company": "AMD",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248824000012/amd-20231230.htm",
+    "path": "v2/eval/sources/amd-20231230.htm",
+    "sha256": "3b8f0e9ee98dc8ca97046fde1bab1ca87033193f7eca8aa15e82dc39ae68a713"
+  },
+  {
+    "id": "amd-fy2022",
+    "company": "AMD",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248823000047/amd-20221231.htm",
+    "path": "v2/eval/sources/amd-20221231.htm",
+    "sha256": "d601beb55cd7d00f4845552d3485f1244bc69121e281ece7ebdced525992d449"
+  },
+  {
+    "id": "intc-fy2024",
+    "company": "Intel",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086325000009/intc-20241228.htm",
+    "path": "v2/eval/sources/intc-20241228.htm",
+    "sha256": "4dbe52ed7cb51bb263d7d3e5a487fed85e79ed39979d1e0570a3b29c949014c2"
+  },
+  {
+    "id": "intc-fy2023",
+    "company": "Intel",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086324000010/intc-20231230.htm",
+    "path": "v2/eval/sources/intc-20231230.htm",
+    "sha256": "75c18bd717a5506dba56ec2b179c5b8b8ddde0cdc8dad53d78d16fd0d0827947"
+  },
+  {
+    "id": "intc-fy2022",
+    "company": "Intel",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086323000006/intc-20221231.htm",
+    "path": "v2/eval/sources/intc-20221231.htm",
+    "sha256": "49ce4bff7a40b0e951929f2cb413dc36d76016ff750493fcda1cf4a9bb1d7c6d"
+  },
+  {
+    "id": "qcom-fy2024",
+    "company": "Qualcomm",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432824000075/qcom-20240929.htm",
+    "path": "v2/eval/sources/qcom-20240929.htm",
+    "sha256": "b81795cdaad19757c10a969ed424863d0fd3ceb786eed560f55bc0e38761ad2b"
+  },
+  {
+    "id": "qcom-fy2023",
+    "company": "Qualcomm",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432823000055/qcom-20230924.htm",
+    "path": "v2/eval/sources/qcom-20230924.htm",
+    "sha256": "1930317262ac11481248dab0bbb982fa9fc7da9af7ec1a2793aa759cb1937c62"
+  },
+  {
+    "id": "qcom-fy2022",
+    "company": "Qualcomm",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432822000021/qcom-20220925.htm",
+    "path": "v2/eval/sources/qcom-20220925.htm",
+    "sha256": "fe2ebdcf2cfa58731fc2a3c0981e1b1c9f8cfa6003c10b4a7e4bd9b42dc1d073"
+  },
+  {
+    "id": "avgo-fy2024",
+    "company": "Broadcom",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016824000139/avgo-20241103.htm",
+    "path": "v2/eval/sources/avgo-20241103.htm",
+    "sha256": "141dfd63f10d6deaa83459cce359bc1d3f5eb51f4c3a86cdb62866c41a548d4a"
+  },
+  {
+    "id": "avgo-fy2023",
+    "company": "Broadcom",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016823000096/avgo-20231029.htm",
+    "path": "v2/eval/sources/avgo-20231029.htm",
+    "sha256": "ce1a49351f4e2468a5553cfa5acf1b856f6687ead0d8425487eb9396fa6cb833"
+  },
+  {
+    "id": "avgo-fy2022",
+    "company": "Broadcom",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016822000118/avgo-20221030.htm",
+    "path": "v2/eval/sources/avgo-20221030.htm",
+    "sha256": "db9a5a78c7a3c44b007a28faa46cfd961cf6bd01f28ea4344a0291edc63a0003"
+  },
+  {
+    "id": "mu-fy2024",
+    "company": "Micron",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000027/mu-20240829.htm",
+    "path": "v2/eval/sources/mu-20240829.htm",
+    "sha256": "2aec53dcc8cb3b82669594f44fffcbbbee2cd99518ac36a1d999b622044b4fdb"
+  },
+  {
+    "id": "mu-fy2023",
+    "company": "Micron",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312523000054/mu-20230831.htm",
+    "path": "v2/eval/sources/mu-20230831.htm",
+    "sha256": "dd75a8627e44f70e83f0b3dab05cf009ad0d205c92a2e8d2520e067f50b65c9a"
+  },
+  {
+    "id": "mu-fy2022",
+    "company": "Micron",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312522000048/mu-20220901.htm",
+    "path": "v2/eval/sources/mu-20220901.htm",
+    "sha256": "b8612d8d92d194d7e041c9921ba97fdeef1846f77f279869765b9c257e7eec5a"
+  },
+  {
+    "id": "txn-fy2024",
+    "company": "Texas Instruments",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/97476/000009747625000007/txn-20241231.htm",
+    "path": "v2/eval/sources/txn-20241231.htm",
+    "sha256": "65286ce5a5636a88e12dda788e7a546b3f4dbaf1296ac1234e6902c5523609e2"
+  },
+  {
+    "id": "txn-fy2023",
+    "company": "Texas Instruments",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/97476/000009747624000007/txn-20231231.htm",
+    "path": "v2/eval/sources/txn-20231231.htm",
+    "sha256": "3b516c9de6502405e07cea48f1474e8dc601bcd8c25752c714879b55de998687"
+  },
+  {
+    "id": "txn-fy2022",
+    "company": "Texas Instruments",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/97476/000009747623000007/txn-20221231.htm",
+    "path": "v2/eval/sources/txn-20221231.htm",
+    "sha256": "d6ba66eea7b589af89c6a13f9cba648cc11556d6f59f50a1468e257a7a90cb29"
+  }
+]

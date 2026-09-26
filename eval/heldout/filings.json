@@ -1,0 +1,98 @@
+[
+  {
+    "id": "adi-fy2024",
+    "company": "Analog Devices",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628124000204/adi-20241102.htm",
+    "path": "v2/eval/sources/adi-20241102.htm",
+    "sha256": "eaf333afe2dd3ba0574e7933bae0374697495452a9ade490b8fce27f4201c6c3"
+  },
+  {
+    "id": "adi-fy2023",
+    "company": "Analog Devices",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628123000203/adi-20231028.htm",
+    "path": "v2/eval/sources/adi-20231028.htm",
+    "sha256": "b2dbed7a4b3b0d7682e92d3f547689f889017c7fedff0db1cf7ecf429324336d"
+  },
+  {
+    "id": "adi-fy2022",
+    "company": "Analog Devices",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628122000250/adi-20221029.htm",
+    "path": "v2/eval/sources/adi-20221029.htm",
+    "sha256": "c7830025fc850df55fb59dcf2d5fbdfa47ecebc56412807e5bf2c6f5b7d3f017"
+  },
+  {
+    "id": "mrvl-fy2024",
+    "company": "Marvell",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563224000009/mrvl-20240203.htm",
+    "path": "v2/eval/sources/mrvl-20240203.htm",
+    "sha256": "d43180eabf2299168e1ee87e1799069bd7868efa1ee1d589e68ca48835a5c1a3"
+  },
+  {
+    "id": "mrvl-fy2023",
+    "company": "Marvell",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563223000013/mrvl-20230128.htm",
+    "path": "v2/eval/sources/mrvl-20230128.htm",
+    "sha256": "8275ad7d8bc7d9c1a03cccc4741c62d8a7775fe3c95dc4a33792f18c05c1506f"
+  },
+  {
+    "id": "mrvl-fy2022",
+    "company": "Marvell",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563222000016/mrvl-20220129.htm",
+    "path": "v2/eval/sources/mrvl-20220129.htm",
+    "sha256": "db04941487ac1ddd73ff5e0d9c614025b1ce0cc27b0a44ee1c93133ee42895de"
+  },
+  {
+    "id": "on-fy2024",
+    "company": "ON Semiconductor",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/1097864/000162828025004557/on-20241231.htm",
+    "path": "v2/eval/sources/on-20241231.htm",
+    "sha256": "8cec96475f9295acf481e570fe717d13c89c7ca01441f2d19fe158baa0bafb83"
+  },
+  {
+    "id": "on-fy2023",
+    "company": "ON Semiconductor",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/1097864/000162828024003201/on-20231231.htm",
+    "path": "v2/eval/sources/on-20231231.htm",
+    "sha256": "bf1c2d07b2305c9a1df56db23bb772b803d2ab9116708c287192097029ffe0fa"
+  },
+  {
+    "id": "on-fy2022",
+    "company": "ON Semiconductor",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/1097864/000162828023002350/on-20221231.htm",
+    "path": "v2/eval/sources/on-20221231.htm",
+    "sha256": "6babe46d32bbcf448909e047abe973d8c41161854b7b150a9ec55450978f55ca"
+  },
+  {
+    "id": "mchp-fy2024",
+    "company": "Microchip",
+    "fiscal_year": 2024,
+    "url": "https://www.sec.gov/Archives/edgar/data/827054/000082705424000098/mchp-20240331.htm",
+    "path": "v2/eval/sources/mchp-20240331.htm",
+    "sha256": "04e7cfa4e5731374b60ee7d69f65ddea8490d66defae747040fb34624826fb1c"
+  },
+  {
+    "id": "mchp-fy2023",
+    "company": "Microchip",
+    "fiscal_year": 2023,
+    "url": "https://www.sec.gov/Archives/edgar/data/827054/000082705423000080/mchp-20230331.htm",
+    "path": "v2/eval/sources/mchp-20230331.htm",
+    "sha256": "ee43abbe9edd7cbeb6e614b2e45a8f889389fe2014735285fb7f29d7efa05fdb"
+  },
+  {
+    "id": "mchp-fy2022",
+    "company": "Microchip",
+    "fiscal_year": 2022,
+    "url": "https://www.sec.gov/Archives/edgar/data/827054/000082705422000094/mchp-20220331.htm",
+    "path": "v2/eval/sources/mchp-20220331.htm",
+    "sha256": "14e6546050650f5801c8411e45cd87080da6de8aca8e05f310c81b9e83d58c7d"
+  }
+]

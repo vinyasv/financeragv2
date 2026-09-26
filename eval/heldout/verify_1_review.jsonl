@@ -1,0 +1,38 @@
+{"id": "h001", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h002", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h003", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h004", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h005", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h006", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h007", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h008", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h009", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h010", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h011", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h012", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h013", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h014", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h015", "numbers_agree": true, "issues": ["Minor (non-blocking): MD&A prints revenue growth as a rounded 64%; an answer quoting that printed figure would miss gold 64.16 by 0.16 pp (> 0.05 tolerance). The question directs computation from the income statement, so the gold is correct."], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h016", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h017", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h018", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h019", "numbers_agree": true, "issues": ["Minor (non-blocking): AMD fiscal years are 52/53-week years ending Dec 30, 2023 and Dec 28, 2024; period-end dates not stated (rule 5.1), but no alternative reading exists. R&D 5,872 is identical in amd-20231230.htm and amd-20241228.htm."], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h020", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h021", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h022", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h023", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h024", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h025", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h026", "numbers_agree": true, "issues": ["Minor (non-blocking): Intel's 2023 10-K prints its own non-GAAP 'Adjusted free cash flow' of (11,853); the question's explicit definition (OCF 11,471 minus additions to PP&E 25,750 = -14,279) removes ambiguity. Fiscal year end (Dec 30, 2023) not stated but anchored by the 2023 10-K."], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h027", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h028", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h029", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h030", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h031", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h032", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h033", "numbers_agree": true, "issues": ["Minor (non-blocking): the consolidated income statement has a 'Licensing' revenue line of 6,171 that differs from QTL segment revenue 5,572; the question says QTL and the QTL MD&A table labels 5,572 'Licensing revenues', so gold (72.27%, 14.30%) is correct. Filing prints EBT margin as 72%."], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h034", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h035", "numbers_agree": true, "issues": [], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h036", "numbers_agree": true, "issues": ["Minor (non-blocking): difference is 12.11 from unrounded margins vs 12.12 from rounded margins; both within 0.05 tolerance, so the question need not specify."], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h037", "numbers_agree": true, "issues": ["Minor (non-blocking): onsemi R&D intensity 6.995% sits on a rounding boundary (6.99 or 7.00); difference 23.15 unrounded vs 23.14 rounded. All within 0.05 tolerance."], "recommendation": "keep", "proposed_fix": ""}
+{"id": "h038", "numbers_agree": true, "issues": ["Minor (non-blocking): difference from rounded ratios (2.71-0.98=1.73) would miss gold 1.72 under the 0.005 ratio tolerance; the question explicitly requires unrounded ratios (2.7076-0.9842=1.7234), so gold is correct."], "recommendation": "keep", "proposed_fix": ""}

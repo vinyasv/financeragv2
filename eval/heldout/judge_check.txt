@@ -1,0 +1,6 @@
+p02: original [True, True]; planted [[False, False], [False, False]]; PASS
+p18: original [True, True, True, True, True]; planted [[True, True, True, False, False], [True, True, True, False, False]]; PASS
+p05: original [True, True]; planted [[True, False], [True, False]]; PASS
+p03: original [True, True]; planted [[True, False], [True, False]]; PASS
+p16: original [True, True, True, True, True]; planted [[True, True, True, False, False], [True, True, True, False, False]]; PASS
+judge google/gemini-3.8-flash: PASS

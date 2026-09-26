@@ -1,0 +1,780 @@
+=== 11:32:49 verify
+v2/app.py: OK
+v2/xbrl.py: OK
+v2/reasoning.py: OK
+v2/schema.sql: OK
+v2/eval/baseline.py: OK
+v2/eval/run.py: OK
+v2/eval/analysis.py: OK
+v2/eval/heldout/PROTOCOL.md: OK
+v2/eval/heldout/questions.jsonl: OK
+v2/eval/heldout/filings.json: OK
+v2/eval/filings.json: OK
+v2/eval/heldout/adjudication.jsonl: OK
+=== 11:32:49 ingest
+v2 {'id': 'adi-fy2024', 'passages': 248, 'rows': 444, 'facts': 1110}
+baseline adi-fy2024 257 chunks
+v2 {'id': 'adi-fy2023', 'passages': 252, 'rows': 485, 'facts': 1155}
+baseline adi-fy2023 265 chunks
+v2 {'id': 'adi-fy2022', 'passages': 256, 'rows': 486, 'facts': 1158}
+baseline adi-fy2022 271 chunks
+v2 {'id': 'mrvl-fy2024', 'passages': 279, 'rows': 425, 'facts': 1134}
+baseline mrvl-fy2024 287 chunks
+v2 {'id': 'mrvl-fy2023', 'passages': 284, 'rows': 448, 'facts': 1300}
+baseline mrvl-fy2023 294 chunks
+v2 {'id': 'mrvl-fy2022', 'passages': 295, 'rows': 467, 'facts': 1285}
+baseline mrvl-fy2022 305 chunks
+v2 {'id': 'on-fy2024', 'passages': 243, 'rows': 495, 'facts': 1268}
+baseline on-fy2024 250 chunks
+v2 {'id': 'on-fy2023', 'passages': 249, 'rows': 526, 'facts': 1377}
+baseline on-fy2023 261 chunks
+v2 {'id': 'on-fy2022', 'passages': 245, 'rows': 532, 'facts': 1425}
+baseline on-fy2022 253 chunks
+v2 {'id': 'mchp-fy2024', 'passages': 288, 'rows': 418, 'facts': 1040}
+baseline mchp-fy2024 298 chunks
+v2 {'id': 'mchp-fy2023', 'passages': 262, 'rows': 416, 'facts': 1071}
+baseline mchp-fy2023 265 chunks
+v2 {'id': 'mchp-fy2022', 'passages': 263, 'rows': 448, 'facts': 1160}
+baseline mchp-fy2022 267 chunks
+=== 11:39:09 eval v2
+h001 run 1: complete 5.96s
+h001 run 2: complete 5.97s
+h001 run 3: complete 6.02s
+h002 run 1: complete 6.04s
+h003 run 2: complete 5.54s
+h002 run 3: complete 5.61s
+h003 run 1: complete 5.85s
+h002 run 2: complete 6.15s
+h004 run 1: complete 5.77s
+h004 run 2: complete 5.6s
+h003 run 3: complete 6.17s
+h004 run 3: complete 5.67s
+h005 run 1: complete 5.89s
+h005 run 2: complete 5.77s
+h006 run 1: complete 5.47s
+h005 run 3: complete 6.14s
+h006 run 2: complete 5.68s
+h007 run 1: complete 7.33s
+h007 run 2: complete 7.23s
+h006 run 3: complete 10.14s
+h007 run 3: complete 8.01s
+h008 run 1: complete 8.1s
+h008 run 2: complete 8.78s
+h008 run 3: complete 8.61s
+h009 run 1: complete 7.02s
+h009 run 2: complete 6.79s
+h010 run 1: complete 5.56s
+h009 run 3: complete 8.16s
+h010 run 2: complete 6.23s
+h010 run 3: complete 8.07s
+h011 run 1: complete 7.7s
+h011 run 2: complete 8.1s
+h011 run 3: complete 9.38s
+h012 run 2: complete 6.26s
+h012 run 3: complete 5.96s
+h012 run 1: partial 9.42s
+h013 run 2: complete 6.69s
+h014 run 1: complete 7.17s
+h013 run 1: complete 11.52s
+h013 run 3: complete 9.49s
+h014 run 2: complete 7.34s
+h014 run 3: complete 7.3s
+h015 run 1: complete 6.69s
+h015 run 2: complete 6.16s
+h015 run 3: complete 7.34s
+h016 run 2: complete 6.06s
+h016 run 3: complete 7.09s
+h016 run 1: complete 7.83s
+h017 run 1: complete 6.0s
+h017 run 2: complete 6.65s
+h017 run 3: complete 6.05s
+h018 run 1: complete 7.3s
+h018 run 2: complete 6.74s
+h018 run 3: complete 6.04s
+h019 run 1: complete 6.13s
+h019 run 2: complete 6.57s
+h019 run 3: complete 5.73s
+h020 run 2: complete 5.64s
+h020 run 1: complete 6.18s
+h020 run 3: complete 6.96s
+h021 run 3: complete 8.33s
+h021 run 1: complete 10.17s
+h021 run 2: complete 9.25s
+h022 run 1: complete 6.83s
+h022 run 3: complete 7.32s
+h022 run 2: complete 8.04s
+h023 run 2: complete 8.1s
+h023 run 1: complete 9.57s
+h023 run 3: complete 9.67s
+h024 run 1: complete 10.68s
+h024 run 2: complete 10.35s
+h024 run 3: complete 10.0s
+h025 run 1: complete 6.68s
+h025 run 3: complete 7.08s
+h025 run 2: complete 8.85s
+h026 run 1: complete 9.37s
+h026 run 2: complete 9.55s
+h027 run 1: complete 8.39s
+h026 run 3: complete 9.43s
+h027 run 2: partial 11.22s
+h027 run 3: complete 8.91s
+h028 run 1: complete 9.05s
+h028 run 2: complete 11.19s
+h028 run 3: complete 9.43s
+h029 run 1: partial 10.16s
+h029 run 2: partial 11.63s
+h029 run 3: partial 8.93s
+h030 run 1: complete 11.01s
+h031 run 1: complete 8.61s
+h030 run 2: complete 13.68s
+h030 run 3: complete 14.33s
+h031 run 2: complete 9.82s
+h031 run 3: complete 9.27s
+h032 run 1: complete 8.96s
+h032 run 3: complete 9.19s
+h032 run 2: complete 10.62s
+h033 run 2: complete 8.75s
+h033 run 1: complete 13.62s
+h033 run 3: complete 10.88s
+h034 run 1: complete 12.05s
+h034 run 2: partial 10.35s
+h034 run 3: complete 10.24s
+h035 run 1: complete 8.39s
+h035 run 2: complete 8.92s
+h035 run 3: complete 9.3s
+h036 run 1: complete 8.8s
+h036 run 2: complete 8.23s
+h036 run 3: complete 8.91s
+h037 run 1: complete 9.89s
+h037 run 2: complete 9.15s
+h037 run 3: complete 9.59s
+h038 run 1: complete 8.56s
+h038 run 2: complete 8.63s
+h038 run 3: complete 8.27s
+h039 run 1: complete 12.7s
+h039 run 2: complete 11.75s
+h039 run 3: complete 11.12s
+h040 run 1: complete 10.12s
+h040 run 3: complete 8.91s
+h040 run 2: complete 10.89s
+h041 run 1: complete 11.13s
+h041 run 2: complete 11.73s
+h041 run 3: complete 10.86s
+h042 run 1: complete 10.73s
+h042 run 2: complete 10.0s
+h042 run 3: complete 9.96s
+h043 run 1: complete 14.84s
+h043 run 2: complete 15.48s
+h044 run 1: complete 13.16s
+h043 run 3: complete 16.18s
+h044 run 2: complete 13.41s
+h044 run 3: complete 13.86s
+h045 run 1: complete 12.81s
+h045 run 2: complete 13.53s
+h045 run 3: complete 15.13s
+h046 run 1: complete 15.39s
+h046 run 2: complete 15.84s
+h046 run 3: complete 15.24s
+h047 run 1: complete 15.37s
+h048 run 1: complete 13.13s
+h047 run 2: complete 16.89s
+h047 run 3: complete 15.64s
+h048 run 2: complete 12.38s
+h048 run 3: complete 13.46s
+h049 run 2: complete 15.94s
+h049 run 1: complete 16.98s
+h049 run 3: complete 16.39s
+h050 run 1: complete 24.64s
+h050 run 3: complete 20.94s
+h050 run 2: complete 23.58s
+h051 run 1: partial 26.12s
+h051 run 2: partial 19.08s
+h051 run 3: partial 19.5s
+h052 run 1: complete 33.64s
+h053 run 1: partial 17.16s
+h052 run 2: complete 25.05s
+h052 run 3: complete 27.83s
+h053 run 2: partial 18.61s
+h054 run 1: complete 20.45s
+h053 run 3: partial 23.14s
+h054 run 2: complete 20.34s
+h055 run 1: complete 9.21s
+h055 run 2: complete 10.52s
+h055 run 3: complete 8.52s
+h054 run 3: complete 26.23s
+h057 run 1: complete 8.73s
+h056 run 3: complete 16.24s
+h056 run 1: complete 24.34s
+h056 run 2: complete 25.47s
+h057 run 3: complete 7.34s
+h057 run 2: complete 9.56s
+h058 run 2: complete 7.5s
+h058 run 1: partial 11.94s
+h059 run 1: complete 8.79s
+h059 run 2: complete 9.6s
+h058 run 3: partial 14.54s
+h059 run 3: complete 9.09s
+h060 run 1: complete 8.0s
+h060 run 2: complete 8.05s
+h060 run 3: complete 8.8s
+h061 run 1: complete 8.39s
+h061 run 2: complete 7.33s
+h061 run 3: complete 9.03s
+h062 run 2: complete 7.85s
+h062 run 1: complete 8.5s
+h062 run 3: complete 8.44s
+h063 run 1: complete 6.97s
+h063 run 2: complete 7.3s
+h063 run 3: complete 7.88s
+h064 run 1: partial 12.01s
+h065 run 1: complete 10.47s
+h064 run 2: insufficient 15.09s
+h064 run 3: partial 15.95s
+h065 run 2: insufficient 11.41s
+h065 run 3: complete 13.0s
+h066 run 1: complete 12.7s
+h066 run 2: complete 12.36s
+h066 run 3: complete 12.06s
+h067 run 1: complete 10.11s
+h067 run 2: complete 9.17s
+h067 run 3: complete 10.54s
+h068 run 1: complete 9.43s
+h068 run 2: complete 10.56s
+h068 run 3: complete 10.2s
+h069 run 1: complete 8.33s
+h069 run 2: complete 8.64s
+h069 run 3: complete 9.92s
+h070 run 2: complete 9.96s
+h070 run 3: complete 9.31s
+h070 run 1: complete 10.39s
+h071 run 1: insufficient 2.57s
+h071 run 2: insufficient 2.61s
+h071 run 3: insufficient 2.65s
+h072 run 2: insufficient 9.61s
+h072 run 1: insufficient 10.86s
+h073 run 1: insufficient 9.28s
+h072 run 3: insufficient 12.99s
+h073 run 2: insufficient 8.71s
+h073 run 3: insufficient 8.51s
+h074 run 1: insufficient 9.44s
+h075 run 1: insufficient 2.79s
+h075 run 2: insufficient 3.28s
+h075 run 3: insufficient 2.86s
+h074 run 2: insufficient 11.88s
+h074 run 3: insufficient 14.14s
+h076 run 2: insufficient 9.96s
+h077 run 1: insufficient 2.63s
+h076 run 1: insufficient 12.79s
+h077 run 2: insufficient 2.62s
+h077 run 3: insufficient 2.84s
+h076 run 3: insufficient 13.61s
+wrote v2/eval/heldout/results/v2.json
+=== 11:49:07 eval k6
+h001 run 2: complete 10.14s
+h001 run 3: complete 10.14s
+h001 run 1: complete 10.15s
+h002 run 1: insufficient 11.68s
+h002 run 3: insufficient 6.69s
+h003 run 1: insufficient 7.19s
+h003 run 2: insufficient 5.96s
+h002 run 2: insufficient 7.72s
+h003 run 3: insufficient 5.35s
+h004 run 3: complete 4.48s
+h004 run 2: complete 6.29s
+h004 run 1: complete 7.21s
+h005 run 2: insufficient 5.93s
+h006 run 1: insufficient 3.79s
+h005 run 1: insufficient 7.1s
+h005 run 3: insufficient 7.25s
+h006 run 2: insufficient 4.31s
+h007 run 1: complete 4.0s
+h006 run 3: insufficient 5.12s
+h007 run 2: complete 2.94s
+h007 run 3: complete 3.29s
+h008 run 2: insufficient 5.38s
+h008 run 1: insufficient 5.65s
+h008 run 3: insufficient 6.05s
+h009 run 1: insufficient 6.42s
+h009 run 2: insufficient 5.42s
+h009 run 3: insufficient 5.9s
+h011 run 1: insufficient 4.15s
+h010 run 2: complete 8.12s
+h010 run 3: complete 6.51s
+h011 run 2: insufficient 4.61s
+h010 run 1: complete 14.39s
+h012 run 1: insufficient 3.98s
+h011 run 3: insufficient 5.3s
+h012 run 2: insufficient 4.41s
+h012 run 3: insufficient 4.72s
+h013 run 1: complete 4.57s
+h013 run 2: complete 5.42s
+h013 run 3: complete 5.37s
+h014 run 2: insufficient 4.67s
+h014 run 1: insufficient 7.47s
+h014 run 3: insufficient 6.34s
+h015 run 1: complete 5.77s
+h015 run 2: complete 5.47s
+h015 run 3: complete 5.78s
+h016 run 1: complete 5.22s
+h016 run 2: complete 5.06s
+h016 run 3: complete 5.03s
+h017 run 2: complete 5.05s
+h017 run 1: complete 5.4s
+h017 run 3: complete 4.56s
+h018 run 1: complete 5.49s
+h018 run 2: complete 5.68s
+h018 run 3: complete 5.5s
+h019 run 1: insufficient 5.06s
+h019 run 2: insufficient 4.63s
+h019 run 3: insufficient 4.28s
+h020 run 1: insufficient 4.69s
+h020 run 2: insufficient 5.24s
+h020 run 3: insufficient 5.29s
+h021 run 2: insufficient 4.31s
+h021 run 1: insufficient 4.88s
+h021 run 3: insufficient 3.93s
+h022 run 1: complete 4.91s
+h022 run 2: complete 5.0s
+h023 run 1: insufficient 4.99s
+h022 run 3: complete 5.53s
+h023 run 2: insufficient 4.5s
+h024 run 1: insufficient 3.02s
+h023 run 3: insufficient 4.84s
+h024 run 3: insufficient 4.93s
+h024 run 2: insufficient 6.39s
+h025 run 1: insufficient 4.44s
+h025 run 2: insufficient 5.12s
+h025 run 3: insufficient 3.82s
+h026 run 1: complete 4.91s
+h026 run 2: complete 4.93s
+h026 run 3: complete 4.19s
+h027 run 1: insufficient 5.21s
+h027 run 2: insufficient 5.46s
+h027 run 3: insufficient 5.07s
+h028 run 1: insufficient 4.33s
+h028 run 2: insufficient 5.96s
+h028 run 3: insufficient 5.5s
+h029 run 1: complete 6.13s
+h029 run 2: complete 6.69s
+h030 run 1: insufficient 3.94s
+h029 run 3: complete 5.89s
+h030 run 2: insufficient 4.52s
+h030 run 3: insufficient 4.71s
+h031 run 1: insufficient 5.32s
+h031 run 3: insufficient 5.11s
+h031 run 2: insufficient 7.13s
+h032 run 1: complete 5.55s
+h032 run 2: complete 5.58s
+h033 run 1: insufficient 4.8s
+h033 run 2: insufficient 4.43s
+h032 run 3: complete 6.75s
+h033 run 3: insufficient 5.23s
+h034 run 1: insufficient 5.61s
+h034 run 2: insufficient 5.62s
+h034 run 3: insufficient 5.84s
+h035 run 1: insufficient 4.19s
+h035 run 2: insufficient 4.06s
+h035 run 3: insufficient 4.44s
+h036 run 1: insufficient 5.37s
+h036 run 2: insufficient 5.77s
+h036 run 3: insufficient 5.77s
+h037 run 1: insufficient 5.77s
+h037 run 2: insufficient 6.3s
+h037 run 3: insufficient 6.29s
+h038 run 1: insufficient 6.82s
+h038 run 2: insufficient 6.17s
+h038 run 3: insufficient 5.06s
+h039 run 1: insufficient 4.63s
+h039 run 3: insufficient 5.03s
+h040 run 1: insufficient 4.93s
+h039 run 2: insufficient 6.95s
+h040 run 2: insufficient 6.2s
+h040 run 3: insufficient 4.68s
+h041 run 1: insufficient 5.81s
+h041 run 2: insufficient 5.87s
+h041 run 3: insufficient 5.55s
+h042 run 1: insufficient 6.55s
+h042 run 2: insufficient 6.22s
+h043 run 1: insufficient 4.44s
+h042 run 3: insufficient 6.49s
+h043 run 2: insufficient 4.85s
+h044 run 1: insufficient 4.37s
+h043 run 3: insufficient 4.92s
+h044 run 2: insufficient 4.83s
+h044 run 3: insufficient 6.27s
+h045 run 2: complete 7.85s
+h045 run 1: complete 8.69s
+h045 run 3: complete 9.01s
+h046 run 1: complete 5.84s
+h046 run 2: complete 5.66s
+h046 run 3: complete 5.88s
+h047 run 1: complete 5.47s
+h047 run 2: complete 5.81s
+h047 run 3: complete 5.35s
+h048 run 1: complete 7.75s
+h048 run 3: complete 6.38s
+h048 run 2: complete 6.84s
+h049 run 1: insufficient 3.98s
+h049 run 2: insufficient 4.56s
+h049 run 3: insufficient 4.56s
+h050 run 1: complete 5.8s
+h050 run 2: complete 7.03s
+h050 run 3: complete 6.39s
+h051 run 1: complete 6.46s
+h051 run 3: complete 5.25s
+h051 run 2: complete 7.06s
+h052 run 1: insufficient 6.79s
+h052 run 2: insufficient 7.17s
+h053 run 1: insufficient 6.16s
+h053 run 2: insufficient 6.22s
+h054 run 1: complete 4.58s
+h052 run 3: insufficient 11.77s
+h053 run 3: insufficient 6.46s
+h054 run 3: complete 4.86s
+h054 run 2: complete 5.08s
+h055 run 2: complete 6.27s
+h055 run 1: complete 7.38s
+h056 run 1: complete 4.98s
+h056 run 2: complete 5.97s
+h055 run 3: complete 8.41s
+h057 run 1: complete 4.57s
+h056 run 3: complete 8.36s
+h057 run 2: complete 4.4s
+h057 run 3: complete 4.41s
+h058 run 1: complete 3.68s
+h058 run 3: complete 3.17s
+h059 run 1: complete 3.21s
+h058 run 2: complete 4.61s
+h059 run 2: complete 4.62s
+h060 run 1: complete 3.25s
+h060 run 2: complete 3.73s
+h059 run 3: complete 4.61s
+h060 run 3: complete 3.34s
+h061 run 1: complete 3.13s
+h062 run 1: complete 3.47s
+h061 run 2: complete 5.19s
+h061 run 3: complete 4.82s
+h062 run 2: complete 3.42s
+h062 run 3: complete 3.66s
+h063 run 2: complete 3.16s
+h063 run 1: complete 3.29s
+h063 run 3: complete 3.36s
+h064 run 1: insufficient 5.89s
+h065 run 1: insufficient 5.17s
+h064 run 3: insufficient 5.79s
+h064 run 2: insufficient 6.29s
+h065 run 3: insufficient 4.77s
+h066 run 2: insufficient 4.6s
+h066 run 1: insufficient 5.33s
+h065 run 2: insufficient 5.9s
+h067 run 1: insufficient 4.42s
+h066 run 3: insufficient 5.07s
+h067 run 3: insufficient 5.11s
+h067 run 2: insufficient 6.01s
+h068 run 1: insufficient 4.5s
+h068 run 2: insufficient 4.76s
+h068 run 3: insufficient 5.65s
+h069 run 1: insufficient 6.07s
+h069 run 2: insufficient 4.79s
+h069 run 3: insufficient 4.87s
+h070 run 1: insufficient 5.24s
+h070 run 2: insufficient 4.82s
+h070 run 3: insufficient 4.82s
+h071 run 1: insufficient 4.39s
+h071 run 2: insufficient 4.72s
+h071 run 3: insufficient 4.46s
+h072 run 1: insufficient 4.02s
+h072 run 2: insufficient 4.42s
+h072 run 3: insufficient 4.31s
+h073 run 1: insufficient 4.74s
+h073 run 2: insufficient 4.63s
+h073 run 3: insufficient 4.18s
+h074 run 1: insufficient 4.41s
+h074 run 2: insufficient 4.27s
+h074 run 3: insufficient 3.78s
+h075 run 1: insufficient 4.6s
+h075 run 2: insufficient 4.7s
+h075 run 3: insufficient 4.22s
+h076 run 1: insufficient 4.95s
+h076 run 2: insufficient 4.86s
+h076 run 3: insufficient 4.25s
+h077 run 1: insufficient 4.45s
+h077 run 3: insufficient 4.46s
+h077 run 2: insufficient 5.91s
+wrote v2/eval/heldout/results/baseline_k6.json
+=== 11:54:22 eval k12
+h002 run 1: complete 3.24s
+h001 run 1: complete 3.42s
+h001 run 2: complete 3.54s
+h001 run 3: complete 3.65s
+h002 run 3: complete 3.15s
+h002 run 2: complete 3.33s
+h003 run 2: insufficient 6.28s
+h004 run 1: complete 3.53s
+h003 run 1: insufficient 6.99s
+h003 run 3: insufficient 6.29s
+h004 run 3: complete 3.29s
+h004 run 2: complete 3.88s
+h005 run 1: complete 3.5s
+h005 run 2: complete 3.37s
+h005 run 3: complete 3.41s
+h006 run 2: insufficient 4.39s
+h006 run 1: insufficient 5.07s
+h006 run 3: insufficient 4.36s
+h007 run 1: complete 4.84s
+h007 run 3: complete 3.66s
+h007 run 2: complete 5.08s
+h008 run 1: insufficient 5.59s
+h008 run 3: insufficient 5.37s
+h009 run 1: insufficient 5.51s
+h008 run 2: insufficient 7.47s
+h009 run 2: insufficient 4.69s
+h009 run 3: insufficient 4.69s
+h010 run 1: complete 5.89s
+h010 run 2: complete 6.41s
+h010 run 3: complete 5.85s
+h011 run 1: complete 6.27s
+h011 run 3: complete 4.72s
+h011 run 2: complete 5.48s
+h012 run 1: insufficient 5.84s
+h012 run 2: insufficient 5.18s
+h013 run 1: complete 4.7s
+h012 run 3: insufficient 5.0s
+h013 run 2: complete 5.11s
+h013 run 3: complete 4.58s
+h014 run 2: insufficient 5.02s
+h014 run 1: insufficient 7.42s
+h015 run 1: complete 5.65s
+h014 run 3: insufficient 9.07s
+h015 run 2: complete 6.64s
+h015 run 3: complete 5.06s
+h016 run 1: complete 5.77s
+h016 run 3: complete 4.98s
+h016 run 2: complete 5.54s
+h017 run 1: complete 5.48s
+h017 run 2: complete 4.97s
+h017 run 3: complete 4.87s
+h018 run 1: complete 5.34s
+h018 run 2: complete 5.2s
+h018 run 3: complete 5.1s
+h019 run 1: insufficient 5.87s
+h019 run 2: insufficient 5.14s
+h019 run 3: insufficient 4.66s
+h020 run 1: insufficient 5.39s
+h021 run 1: insufficient 4.76s
+h020 run 2: insufficient 5.05s
+h020 run 3: insufficient 5.12s
+h021 run 2: insufficient 5.11s
+h021 run 3: insufficient 4.54s
+h022 run 2: complete 4.92s
+h022 run 1: complete 5.43s
+h022 run 3: complete 5.23s
+h023 run 1: insufficient 4.61s
+h023 run 3: insufficient 5.03s
+h023 run 2: insufficient 5.87s
+h024 run 2: insufficient 4.3s
+h024 run 1: insufficient 5.54s
+h024 run 3: insufficient 4.01s
+h025 run 1: insufficient 4.23s
+h025 run 3: insufficient 4.29s
+h025 run 2: insufficient 4.88s
+h026 run 1: complete 4.83s
+h026 run 2: complete 5.2s
+h027 run 1: insufficient 5.36s
+h026 run 3: complete 7.18s
+h027 run 3: insufficient 5.47s
+h027 run 2: insufficient 7.48s
+h028 run 1: insufficient 4.32s
+h028 run 2: insufficient 4.36s
+h028 run 3: insufficient 4.34s
+h029 run 1: complete 6.66s
+h030 run 1: insufficient 4.79s
+h029 run 2: complete 7.04s
+h029 run 3: complete 6.7s
+h030 run 2: insufficient 5.84s
+h030 run 3: insufficient 4.76s
+h031 run 1: complete 6.19s
+h031 run 2: complete 5.61s
+h031 run 3: complete 5.32s
+h032 run 1: complete 5.72s
+h032 run 2: complete 5.65s
+h032 run 3: complete 6.74s
+h033 run 1: complete 6.45s
+h033 run 2: complete 6.37s
+h033 run 3: complete 5.58s
+h034 run 1: complete 6.64s
+h034 run 2: complete 6.29s
+h035 run 1: complete 5.43s
+h034 run 3: complete 7.69s
+h035 run 2: complete 5.38s
+h036 run 1: insufficient 4.88s
+h035 run 3: complete 5.44s
+h036 run 3: insufficient 4.46s
+h036 run 2: insufficient 8.63s
+h037 run 1: insufficient 5.98s
+h037 run 2: insufficient 6.62s
+h037 run 3: insufficient 6.0s
+h038 run 1: insufficient 5.13s
+h038 run 3: insufficient 5.89s
+h038 run 2: insufficient 6.57s
+h039 run 1: insufficient 5.88s
+h039 run 2: insufficient 5.75s
+h040 run 1: insufficient 5.13s
+h040 run 2: insufficient 4.35s
+h039 run 3: insufficient 6.29s
+h040 run 3: insufficient 5.67s
+h041 run 1: insufficient 5.88s
+h041 run 3: insufficient 5.24s
+h041 run 2: insufficient 6.03s
+h042 run 1: insufficient 7.32s
+h043 run 1: insufficient 5.79s
+h042 run 2: insufficient 7.85s
+h042 run 3: insufficient 8.57s
+h043 run 2: insufficient 4.72s
+h043 run 3: insufficient 4.85s
+h044 run 1: insufficient 4.73s
+h044 run 2: insufficient 5.37s
+h044 run 3: insufficient 5.41s
+h045 run 1: complete 5.85s
+h045 run 2: complete 4.96s
+h045 run 3: complete 5.99s
+h046 run 1: complete 6.53s
+h046 run 3: complete 5.19s
+h046 run 2: complete 5.55s
+h047 run 1: complete 5.23s
+h047 run 2: complete 5.25s
+h047 run 3: complete 5.7s
+h048 run 1: complete 7.43s
+h048 run 2: complete 7.22s
+h049 run 1: complete 5.52s
+h048 run 3: complete 7.04s
+h049 run 2: complete 4.81s
+h049 run 3: complete 5.9s
+h050 run 2: complete 5.43s
+h050 run 3: complete 5.96s
+h050 run 1: complete 7.38s
+h051 run 1: complete 7.08s
+h051 run 2: complete 7.24s
+h051 run 3: complete 8.29s
+h052 run 1: insufficient 8.88s
+h052 run 2: insufficient 11.32s
+h052 run 3: insufficient 10.15s
+h053 run 1: insufficient 8.22s
+h053 run 2: insufficient 9.63s
+h054 run 1: complete 5.48s
+h054 run 2: complete 5.38s
+h054 run 3: complete 5.19s
+h053 run 3: insufficient 8.85s
+h055 run 1: complete 5.29s
+h055 run 2: complete 6.16s
+h055 run 3: complete 6.35s
+h056 run 1: complete 8.17s
+h057 run 1: complete 3.79s
+h056 run 3: complete 6.32s
+h056 run 2: complete 7.57s
+h057 run 2: complete 4.94s
+h058 run 1: complete 3.58s
+h058 run 2: complete 3.56s
+h057 run 3: complete 4.93s
+h058 run 3: complete 3.29s
+h059 run 2: complete 3.37s
+h059 run 3: complete 3.39s
+h059 run 1: complete 5.39s
+h060 run 1: complete 4.57s
+h060 run 2: complete 4.48s
+h060 run 3: complete 4.63s
+h061 run 1: complete 3.63s
+h061 run 2: complete 3.55s
+h062 run 2: complete 3.66s
+h062 run 1: complete 3.9s
+h061 run 3: complete 5.09s
+h062 run 3: complete 3.5s
+h063 run 2: complete 3.57s
+h063 run 1: complete 3.79s
+h063 run 3: complete 3.6s
+h064 run 1: complete 5.02s
+h064 run 3: complete 4.44s
+h064 run 2: complete 5.14s
+h065 run 1: insufficient 8.2s
+h065 run 2: insufficient 5.86s
+h065 run 3: insufficient 5.11s
+h066 run 1: insufficient 6.63s
+h066 run 2: insufficient 4.91s
+h066 run 3: insufficient 6.27s
+h067 run 1: insufficient 8.24s
+h067 run 2: insufficient 6.53s
+h067 run 3: insufficient 6.95s
+h068 run 1: complete 5.06s
+h068 run 2: insufficient 5.39s
+h068 run 3: insufficient 5.53s
+h069 run 2: insufficient 4.7s
+h069 run 1: insufficient 5.25s
+h069 run 3: insufficient 5.05s
+h070 run 1: insufficient 5.77s
+h070 run 2: insufficient 5.13s
+h070 run 3: insufficient 4.94s
+h071 run 1: insufficient 4.57s
+h071 run 2: insufficient 4.62s
+h071 run 3: insufficient 4.42s
+h072 run 1: insufficient 5.1s
+h072 run 2: insufficient 4.53s
+h072 run 3: insufficient 4.93s
+h073 run 1: insufficient 4.31s
+h073 run 2: insufficient 4.11s
+h073 run 3: insufficient 3.5s
+h074 run 1: insufficient 4.76s
+h074 run 2: insufficient 4.66s
+h074 run 3: insufficient 5.17s
+h075 run 1: insufficient 4.49s
+h075 run 2: insufficient 4.7s
+h075 run 3: insufficient 5.41s
+h076 run 1: insufficient 4.85s
+h076 run 2: insufficient 4.81s
+h076 run 3: insufficient 5.26s
+h077 run 1: insufficient 4.91s
+h077 run 2: insufficient 4.88s
+h077 run 3: insufficient 5.2s
+wrote v2/eval/heldout/results/baseline_k12.json
+=== 11:59:37 retry v2
+re-ran 0 crashed attempts in v2/eval/heldout/results/v2.json
+=== 11:59:38 retry baseline_k6
+re-ran 0 crashed attempts in v2/eval/heldout/results/baseline_k6.json
+=== 11:59:38 retry baseline_k12
+re-ran 0 crashed attempts in v2/eval/heldout/results/baseline_k12.json
+=== 11:59:38 judge
+judged 231 of 231 attempts in v2/eval/heldout/results/v2.json; 0 failed
+judged 231 of 231 attempts in v2/eval/heldout/results/baseline_k6.json; 0 failed
+judged 231 of 231 attempts in v2/eval/heldout/results/baseline_k12.json; 0 failed
+=== 12:07:49 report
+## Hypothesis tests (unit: question; per-question mean over runs)
+
+| test | questions | v2 | comparator | difference [95% bootstrap CI] | wins/losses | p (sign test) | p (Holm) |
+|---|---|---|---|---|---|---|---|
+| H1 correct, v2 vs baseline_k6 (primary) | 77 | 92.6% | 41.1% | +51.5% [+39.4%, +63.2%] | 45/2 | 1.6e-11 | — |
+| H2 correct, v2 vs baseline_k12 | 77 | 92.6% | 55.4% | +37.2% [+25.1%, +49.4%] | 34/4 | 6e-07 | 6e-07 |
+| H3 numeric accuracy, v2 vs baseline_k6 | 63 | 93.9% | 42.9% | +51.1% [+38.6%, +63.2%] | 40/2 | 4.1e-10 | 8.2e-10 |
+| H4 citation support, v2 vs baseline_k6 | 70 | 94.0% | 44.2% | +49.7% [+38.6%, +60.8%] | 47/3 | 3.7e-11 | 1.1e-10 |
+
+## Correct answers, attempt level [95% Wilson interval]
+
+| slice | v2 | baseline_k6 | baseline_k12 |
+|---|---|---|---|
+| all | 93% [89%, 95%] (n=231) | 41% [35%, 48%] (n=231) | 55% [49%, 62%] (n=231) |
+| portion: heldout | 92% [86%, 95%] (n=132) | 45% [37%, 54%] (n=132) | 58% [50%, 66%] (n=132) |
+| portion: development | 94% [87%, 97%] (n=99) | 35% [27%, 45%] (n=99) | 52% [42%, 61%] (n=99) |
+| comparative_prose | 76% [55%, 89%] (n=21) | 0% [0%, 15%] (n=21) | 14% [5%, 35%] (n=21) |
+| cross_company | 100% [85%, 100%] (n=21) | 0% [0%, 15%] (n=21) | 0% [0%, 15%] (n=21) |
+| cross_statement | 95% [77%, 99%] (n=21) | 19% [8%, 40%] (n=21) | 38% [21%, 59%] (n=21) |
+| lookup | 100% [85%, 100%] (n=21) | 14% [5%, 35%] (n=21) | 57% [37%, 76%] (n=21) |
+| mixed | 100% [85%, 100%] (n=21) | 57% [37%, 76%] (n=21) | 71% [50%, 86%] (n=21) |
+| multi_step | 71% [50%, 86%] (n=21) | 71% [50%, 86%] (n=21) | 71% [50%, 86%] (n=21) |
+| negative | 95% [77%, 99%] (n=21) | 14% [5%, 35%] (n=21) | 14% [5%, 35%] (n=21) |
+| prior_year | 100% [85%, 100%] (n=21) | 52% [32%, 72%] (n=21) | 57% [37%, 76%] (n=21) |
+| prose | 100% [85%, 100%] (n=21) | 95% [77%, 99%] (n=21) | 100% [85%, 100%] (n=21) |
+| segment | 81% [60%, 92%] (n=21) | 29% [14%, 50%] (n=21) | 86% [65%, 95%] (n=21) |
+| unanswerable | 100% [85%, 100%] (n=21) | 100% [85%, 100%] (n=21) | 100% [85%, 100%] (n=21) |
+
+Run-to-run agreement: v2 95%, baseline_k6 96%, baseline_k12 99%
+=== 12:07:50 audit-sample
+wrote 99 blinded rows to v2/eval/heldout/audit.csv; key in v2/eval/heldout/audit_key.json
+=== 12:07:50 done
