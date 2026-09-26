@@ -73,6 +73,8 @@ My first LLM grader passed an answer with planted wrong dates in five of five tr
 
 The protocol's primary measure was the pass rate below, which an LLM partly grades. Its fallback, if the grader proved unreliable, was a measure computed by code. The grader was never validated, so I lead with the fallback: required-figure coverage, the share of an answer's required figures that appear anywhere in it, within tolerance. Averaged over three runs per question and then over the 63 held-out questions with required figures, coverage was 94% for the test system, 43% for naive RAG at the matched budget and 60% at the doubled budget. The gap over the matched baseline was 51 points (95% confidence interval: 39 to 63). On the four unseen companies, it was 92% against 49%. Code makes the measure reproducible. It does not make an answer correct.
 
+Code matching ignores which label a figure is attached to. As a check added after the run, I also required the LLM grader to confirm each matched figure under its metric, company and period. Coverage became 92%, 40% and 57%, and the gap over the matched baseline stayed at 52 points (95% confidence interval: 40 to 64).
+
 The pass rate adds the claims, which an LLM grades. An answer passes when it contains every required figure and every required claim. Extra errors fail an answer only when they contradict a required claim, so a pass measures completeness. The test system passed 93% of answers, against 41% for naive RAG at the matched budget and 55% at the doubled budget.
 
 ![Figure 2: Required figures found by question type for the test system and naive RAG at both text budgets.](figures/fig2_figures_found_by_type.png)
@@ -83,7 +85,7 @@ The main limits:
 - **No ablation.** The gain cannot be attributed to any single guideline.
 - **Narrow scope.** One domain, one answer LLM, 7 questions per type.
 - **LLM-written answer key.** No domain expert reviewed it.
-- **Loose figure matching.** A figure counts as found if any number in the answer matches it, whatever label it is attached to. The test system's answers state a median of 8 numbers against 4 for naive RAG, because they show their workings. That favours it. On the Intel segment question below, it named the wrong segment in all three runs yet scored full coverage, because its workings listed every segment's figures.
+- **Coverage is not correctness.** The test system's answers state a median of 8 numbers against 4 for naive RAG, because they show their workings. More numbers give a stray match more chances. The label check above moved every system by 1 to 3 points. The grader rejected 17 matched figures: 3 from the test system and 14 from naive RAG. All 17 were rounding disputes within tolerance, not figures under the wrong label. That check relies on the unvalidated grader. On the Intel segment question below, the test system named the wrong segment in all three runs yet scored full coverage. Its workings gave the right segment's figures under the right labels. Only the pass rate caught the wrong conclusion.
 - **Unvalidated grader.** The pre-registered human check of the LLM grader was not done. Pass rates and prose results depend on that grader. Required-figure coverage does not.
 
 ## Where the guidelines ran out
@@ -106,7 +108,7 @@ The advantage was small or absent for prose-only, unanswerable and multi-step qu
 
 Give the LLM the steps that need judgement, and give code the lookups and calculations that can be specified and checked. On the 63 held-out questions with required figures, the system's required-figure coverage was 94%, against 43% for naive RAG at the matched text budget and 60% at double that budget. The six confidently wrong answers identified in the failure analysis came from a missing source-selection rule, so the rules code runs on need the same scrutiny as the LLM.
 
-The code, questions, answer key and every system output are at [REPO LINK].
+The code, questions, answer key and every system output are at https://github.com/vinyasv/financeragv2.
 
 ## Appendix: Method
 
@@ -114,7 +116,7 @@ The code, questions, answer key and every system output are at [REPO LINK].
 - **Answer key.** LLM agents with no access to either system wrote the questions and answers. Two more agents answered each question independently. An adjudicator resolved and logged every disagreement.
 - **Freeze.** Questions, answer key, code, grading rules and analysis script were hashed (SHA-256) before any system ran. The freeze was not signed off in writing or published in advance. The hashes and file timestamps are in the repository. One pre-registered step, a human check of the LLM grader on 99 claims, was not done.
 - **Models.** Answer LLM `openai/gpt-6-luna` at temperature 0. Embeddings `openai/text-embedding-3-small`. Postgres with exact (unindexed) vector search. Naive RAG retrieved 6 chunks at the matched budget and 12 at the doubled budget. The test system retrieved about 10,500 characters.
-- **Figure matching.** Code parses each number in an answer, with its sign and any "billion" or "thousand". A required figure is matched if any number falls within tolerance: 0.5 for USD millions, 0.05 points for percentages, 0.005 for ratios. The grader does not check which metric a number is attached to. The test system's answers state a median of 8 numbers against 4 for naive RAG.
+- **Figure matching.** Code parses each number in an answer, with its sign and any "billion" or "thousand". A required figure is matched if any number falls within tolerance: 0.5 for USD millions, 0.05 points for percentages, 0.005 for ratios. Code does not check which metric a number is attached to. The test system's answers state a median of 8 numbers against 4 for naive RAG. The label check, added after the run and not pre-registered, also requires the grader's verdict on that figure's claim to be "stated". It reuses verdicts from the original grading run and makes no new model calls. Script and output: `eval/sensitivity.py` and `eval/heldout/results/sensitivity.md`.
 - **Claim grading.** `google/gemini-3.8-flash` at temperature 0 grades each required claim as stated, contradicted or missing, from the answer alone. It passed a planted-error test before the run.
 - **Pass.** The protocol calls this metric "correct". It is renamed here because it measures completeness. Scores are unchanged.
 - **Statistics.** A question's score is its mean over three runs. Required-figure coverage is each question's share of required figures found, averaged over its three runs and then over the 63 questions with required figures (189 answers per system). Unanswerable and some prose questions have none. Pooling all 101 required figures instead gives 94%, 40% and 54%, because questions with more figures then weigh more. The confidence interval is a paired bootstrap over questions (10,000 resamples). Per question, the test system scored higher on 40 and lower on 2 (exact sign test, Holm-adjusted p < 0.001). Pass rates cover all 231 answers per system. The pass-rate gap over the matched baseline was 52 points (95% confidence interval: 39 to 63), higher on 45 questions and lower on 2.

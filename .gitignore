@@ -12,7 +12,9 @@ eval/heldout/audit*.csv
 eval/heldout/audit_key.json
 
 # Intermediate question drafts and verifier passes (final set: questions.jsonl + adjudication.jsonl)
-eval/heldout/questions_[ABC].jsonl
+eval/heldout/questions_A.jsonl
+eval/heldout/questions_B.jsonl
+eval/heldout/questions_C.jsonl
 eval/heldout/questions_draft.jsonl
 eval/heldout/questions_only.jsonl
 eval/heldout/verify_*.jsonl
