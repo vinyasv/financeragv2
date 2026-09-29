@@ -65,6 +65,8 @@ python3 -m v2.app ingest v2/eval/sources/nvda-20240128.htm --id nvda-fy2024 --co
 python3 -m v2.app ask "Calculate NVIDIA's FY2024 operating-cash-flow margin."
 ```
 
+On Supabase, run `security.sql` (for example in the SQL editor) after creating or resetting tables, and again after the baseline's first ingest. It turns on Row-Level Security so the public REST API can't read or change them. The app connects as the table owner and isn't affected.
+
 The exact held-out run commands are in `eval/heldout/FREEZE.md`. Evaluation code is in `eval/run.py` (run, grade, score) and `eval/analysis.py` (pre-registered statistics). `eval/sensitivity.py` holds the label check added after the run. The end-to-end test runs with `python3 -m pytest v2/test_e2e.py -q`.
 
 ## Files
@@ -72,6 +74,7 @@ The exact held-out run commands are in `eval/heldout/FREEZE.md`. Evaluation code
 | path | what |
 |---|---|
 | `app.py`, `xbrl.py`, `reasoning.py`, `schema.sql` | the system |
+| `security.sql` | turns on Row-Level Security for Supabase |
 | `eval/baseline.py` | naive RAG baseline |
 | `eval/heldout/` | protocol, frozen questions, adjudication log, results |
 | `eval/questions_*.jsonl`, `eval/results/` | development set and its runs |
