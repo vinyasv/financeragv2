@@ -1,83 +1,130 @@
 # FinanceRAG v2
 
-An experiment, not a product. It asks one question: if the LLM only plans and writes, and code does the lookups and arithmetic, does it answer questions about SEC 10-K filings better than naive RAG?
+## Purpose
 
-On this test it did, by a wide margin. The test is small, one person built it and parts of the grading were never validated. Read the limitations before quoting any number. The write-up is in [article_tds_short.md](article_tds_short.md).
+This repository contains an experiment. It is not a product.
 
-## What it does
+The experiment tests one idea. The LLM writes a plan and the answer. Code finds the numbers and does the arithmetic. Does this system answer questions about SEC 10-K filings better than naive RAG?
 
-- **Numbers** come from the filing's inline XBRL tags, stored in Postgres and looked up by company, fiscal year, statement and segment. The LLM may pick between numbered candidate rows. It never types a number. Arithmetic runs in Python.
-- **Prose** is found by hybrid search (pgvector plus Postgres full text) over whole-paragraph passages.
-- **The LLM** writes a small JSON plan, then an answer from the looked-up values and passages. Code rejects plans that name companies, years or segments not in the database. It drops a summary containing a number that isn't in the workings.
-- **Missing evidence** is answered "insufficient", not guessed.
+On this test, the answer is yes, and the difference is large. But the test is small, and one person made it. No person checked the LLM grader. Read the limitations before you use a number from this test.
 
-The baseline is naive RAG: whole filings chunked, one vector search, one LLM call, the same models.
+The article is in [article_tds_short.md](article_tds_short.md). The full method is in [METHOD.md](METHOD.md).
 
-## Result
+## How the system works
 
-77 held-out questions over 33 10-Ks from 11 semiconductor companies. 44 of the questions are about 4 companies never used in development. Each system answered every question 3 times.
+- **Numbers.** The system reads the numbers from the inline XBRL tags in each filing. Postgres keeps these numbers. The system finds a number by company, fiscal year, statement and segment. The LLM can select a row from a numbered list. The LLM does not write numbers. Python does all arithmetic.
+- **Text.** The system finds text with hybrid search: pgvector and Postgres full-text search. Each passage is a full paragraph.
+- **Plan and answer.** The LLM writes a small JSON plan. Then the LLM writes the answer from the numbers and the passages. Code rejects a plan that names a company, year or segment that is not in the database. Code removes a summary that contains a number that is not in the calculation.
+- **Missing data.** If the system cannot find the data, it answers "insufficient". It does not guess.
 
-| | this system | naive RAG, same text budget | naive RAG, 2× budget |
+The baseline is naive RAG. It divides each filing into chunks, does one vector search and makes one LLM call. It uses the same models as the system.
+
+## Results
+
+The test used 77 held-out questions about 33 10-K filings from 11 semiconductor companies. 44 of the questions are about 4 companies. I did not use these 4 companies during development. Each system answered each question 3 times.
+
+| Measure | This system | Naive RAG, same text budget | Naive RAG, 2 × text budget |
 |---|---|---|---|
-| Required figures found (code-scored) | 94% | 43% | 60% |
-| Same, figure's label also confirmed by the LLM grader | 92% | 40% | 57% |
-| Pass rate (all figures and claims; LLM-graded) | 93% | 41% | 55% |
-| Median latency | 9.3 s | 5.1 s | 5.2 s |
+| Required numbers found (code scores this) | 94% | 43% | 60% |
+| Required numbers found, and the LLM grader agrees with the label | 92% | 40% | 57% |
+| Pass rate: all numbers and claims (the LLM grader scores this) | 93% | 41% | 55% |
+| Median time for one answer | 9.3 s | 5.1 s | 5.2 s |
 
-Full tables: `eval/heldout/results/report.md`, `summary.md` and `sensitivity.md`.
+The full tables are in `eval/heldout/results/`: `report.md`, `summary.md`, `sensitivity.md` and `mutation.md`.
 
 ## Limitations
 
-- **Small and narrow.** One domain, one answer model (`openai/gpt-6-luna`), about 7 questions per type. Differences between question types are indicative, not established.
-- **Unvalidated grader.** The pre-registered human check of the LLM grader (99 claims) was not done. Pass rates, claim scores, citation support and the label-confirmed figure score all depend on that grader. Only the plain figure match does not.
-- **LLM-written answer key.** LLM agents wrote and cross-checked the questions and gold answers. No domain expert reviewed them.
-- **Weak pre-registration.** Questions, code and analysis were hashed before the run (`eval/heldout/FREEZE.sha256`). The freeze was not published or signed off in advance.
-- **No ablation.** The gain can't be attributed to XBRL lookup, planning, validation or anything else in particular.
-- **Figures found ≠ correct.** On an Intel question the system listed the right segment's figures, then named the wrong segment in all three runs.
-- **A known wrong-answer bug.** Lookups key on company and fiscal year. Later reports restate earlier years, so the system can mix figures from two reports and answer confidently and wrongly. This caused 6 of its 17 failures. Not fixed.
-- **Not better everywhere.** It tied naive RAG on prose, multi-step and unanswerable questions. On segment questions it lost to naive RAG at 2× budget (81% vs 86% of figures found). It is slower and makes more model calls (2.8 vs 2.0).
-- **Tuned on its development set.** Fixes came from failures on 54 development questions (`eval/results_summary.md`), so development scores are optimistic. The held-out set is the real test.
-- **Scope.** Only HTML filings with inline XBRL. Only tagged table numbers are exact; everything else is retrieval. Citations point to table rows and passages, not page numbers. The only test is one live end-to-end test.
-- **Built with an AI coding assistant**, including the question-generation pipeline.
+- **Small test.** The test uses one domain and one answer model (`openai/gpt-6-luna`). Each question type has approximately 7 questions. Thus, the differences between question types are not reliable.
+- **No human check of the grader.** The protocol included a human check of the LLM grader on 99 claims. Nobody did this check. The pass rate and the claim scores use this grader. The code-scored number match does not use it.
+- **Mutation test of the grader.** After the run, an LLM put one error into each claim that the grader passed. The grader found 520 of 521 errors. But it also failed 7% of the correct claims near an error. LLMs made these errors, so this test does not replace a human check.
+- **The LLM wrote the answer key.** LLM agents wrote and checked the questions and the answers. No financial expert examined them.
+- **Weak pre-registration.** Before the run, I recorded SHA-256 hashes of the questions, code and analysis (`eval/heldout/FREEZE.sha256`). I did not publish these hashes before the run.
+- **Simple baseline.** The baseline has no keyword search and no company filter. A better baseline can possibly close part of the difference.
+- **No ablation.** The test does not show which part of the system causes the improvement.
+- **A found number is not a correct answer.** For one Intel question, the system showed the correct numbers for each segment. Then it named the wrong segment in all 3 runs.
+- **Known error.** The system finds a number by company and fiscal year. But a later report can change the numbers for an earlier year. Thus, the system can mix numbers from two reports and give a wrong answer. This error caused 6 of the 17 failures. The error is not repaired.
+- **Not better on all question types.** On text, multi-step and unanswerable questions, the results were approximately equal. On segment questions, naive RAG with 2 × the text budget found more numbers (86% against 81%). The system is also slower and makes more model calls (2.8 against 2.0).
+- **Development tuning.** I changed the system after failures on 54 development questions (`eval/results_summary.md`). Thus, the development scores are too high. The held-out test is the real test.
+- **Scope.** The system reads only HTML filings with inline XBRL. Only the tagged numbers in tables are exact. The system finds all other data with search. Citations show table rows and passages, not page numbers. The repository has only one test. This test uses live services.
+- **AI help.** I made the system and the question pipeline with help from an AI coding assistant.
 
-## Running it
+## How to run the system
 
-The code imports itself as `v2`, so clone it into a folder with that name and run commands from the parent folder:
+You need:
 
-```bash
-git clone https://github.com/vinyasv/financeragv2.git v2
-```
+- Python 3.
+- A Postgres database with `pgvector`. You can use Supabase.
+- An OpenRouter API key.
 
-You need a Postgres database with `pgvector` (Supabase works; use its session pooler URI if IPv6 fails) and an OpenRouter key. Put both in a `.env` file in the parent folder:
+NOTE: The code imports itself as the package `v2`. Thus, the folder must have the name `v2`. Run all commands from the parent folder.
 
-```text
-OPENROUTER_API_KEY=...
-V2_DATABASE_URL=postgresql://...
-```
+1. Clone the repository into a folder with the name `v2`:
 
-Then install, create the tables, download filings and ask a question:
+   ```bash
+   git clone https://github.com/vinyasv/financeragv2.git v2
+   ```
 
-```bash
-python3 -m pip install -r v2/requirements.txt
-python3 -m v2.app init
-python3 -m v2.eval.fetch_filings             # add --heldout for the held-out filings
-python3 -m v2.app ingest v2/eval/sources/nvda-20240128.htm --id nvda-fy2024 --company NVIDIA --url https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm
-python3 -m v2.app ask "Calculate NVIDIA's FY2024 operating-cash-flow margin."
-```
+2. In the parent folder, make a file with the name `.env`. Put your API key and database URI in this file:
 
-On Supabase, run `security.sql` (for example in the SQL editor) after creating or resetting tables, and again after the baseline's first ingest. It turns on Row-Level Security so the public REST API can't read or change them. The app connects as the table owner and isn't affected.
+   ```text
+   OPENROUTER_API_KEY=...
+   V2_DATABASE_URL=postgresql://...
+   ```
 
-The exact held-out run commands are in `eval/heldout/FREEZE.md`. Evaluation code is in `eval/run.py` (run, grade, score) and `eval/analysis.py` (pre-registered statistics). `eval/sensitivity.py` holds the label check added after the run. The end-to-end test runs with `python3 -m pytest v2/test_e2e.py -q`.
+   NOTE: If you use Supabase and your network does not have IPv6, use the session pooler URI.
+
+3. Install the dependencies:
+
+   ```bash
+   python3 -m pip install -r v2/requirements.txt
+   ```
+
+4. Make the database tables:
+
+   ```bash
+   python3 -m v2.app init
+   ```
+
+5. If you use Supabase, run `security.sql` in the Supabase SQL editor. This file turns on Row-Level Security. Then the public REST API cannot read or change the tables. The system connects as the table owner, so it continues to operate.
+
+   CAUTION: Do step 5 again after you reset the tables. Also do step 5 after the first baseline ingest, because the baseline makes a new table.
+
+6. Download the filings from SEC EDGAR. To download the held-out filings, add `--heldout`.
+
+   ```bash
+   python3 -m v2.eval.fetch_filings
+   ```
+
+7. Ingest one filing:
+
+   ```bash
+   python3 -m v2.app ingest v2/eval/sources/nvda-20240128.htm --id nvda-fy2024 --company NVIDIA --url https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm
+   ```
+
+8. Ask a question:
+
+   ```bash
+   python3 -m v2.app ask "Calculate NVIDIA's FY2024 operating-cash-flow margin."
+   ```
+
+## Evaluation
+
+- `eval/heldout/FREEZE.md` contains the commands for the held-out run.
+- `eval/run.py` runs the systems, grades the answers and calculates the scores.
+- `eval/analysis.py` calculates the pre-registered statistics.
+- `eval/sensitivity.py` does the label check. I added this check after the run.
+- `eval/judge_mutation.py` does the mutation test of the grader. I added this test after the run.
+- To run the end-to-end test, use this command: `python3 -m pytest v2/test_e2e.py -q`.
 
 ## Files
 
-| path | what |
+| Path | Contents |
 |---|---|
-| `app.py`, `xbrl.py`, `reasoning.py`, `schema.sql` | the system |
-| `security.sql` | turns on Row-Level Security for Supabase |
-| `eval/baseline.py` | naive RAG baseline |
-| `eval/heldout/` | protocol, frozen questions, adjudication log, results |
-| `eval/questions_*.jsonl`, `eval/results/` | development set and its runs |
-| `GOALS.md` | original goals and design decisions |
-| `figures/` | article figures and the scripts that draw them |
-| `METHOD.md` | full method behind the article: questions, freeze, models, grading, statistics |
+| `app.py`, `xbrl.py`, `reasoning.py`, `schema.sql` | The system |
+| `security.sql` | Turns on Row-Level Security for Supabase |
+| `eval/baseline.py` | The naive RAG baseline |
+| `eval/heldout/` | The protocol, the frozen questions, the adjudication log and the results |
+| `eval/questions_*.jsonl`, `eval/results/` | The development questions and their runs |
+| `METHOD.md` | The full method: questions, freeze, models, grading and statistics |
+| `GOALS.md` | The initial goals and design decisions |
+| `figures/` | The article figures and the scripts that make them |
